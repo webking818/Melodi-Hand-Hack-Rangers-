@@ -86,15 +86,17 @@ graph TD;
     Synth[Web Audio Synth Engine]
 
     HandGesture --> GloveSensors
-    GloveSensors --> ESP32
-    ESP32 --> Backend
+    GloveSensors -->|Wired Connection| ESP32
+    ESP32 -->|Wi-Fi Connection| Backend
 
-    Backend --> GestureRec
-    Backend --> NotesMap
+    Backend -->|MadKwik + AI/ML| GestureRec
+    GestureRec -->|Database + AI/ML| NotesMap
 
-    Backend --> WebSocket
+    NotesMap --> Synth
+    NotesMap --> WebSocket
     WebSocket --> WebApp
-    WebApp --> Synth
+
+
 
 
 
