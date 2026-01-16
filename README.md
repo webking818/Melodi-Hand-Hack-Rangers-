@@ -72,15 +72,29 @@ These movements are interpreted by **machine learning algorithms** and translate
 
 ```mermaid
 graph TD;
+    HandGesture[Hand Gesture]
+
     GloveSensors[ToF + IMU + Flex Sensors]
     ESP32[ESP32 Microcontroller]
+
+    Backend[Backend Server]
+    GestureRec[Gesture Recognition]
+    NotesMap[Notes Mapping]
+
     WebSocket[WebSocket Server]
     WebApp[Browser App]
     Synth[Web Audio Synth Engine]
 
+    HandGesture --> GloveSensors
     GloveSensors --> ESP32
-    ESP32 --> WebSocket
+    ESP32 --> Backend
+
+    Backend --> GestureRec
+    Backend --> NotesMap
+
+    Backend --> WebSocket
     WebSocket --> WebApp
     WebApp --> Synth
+
 
 
